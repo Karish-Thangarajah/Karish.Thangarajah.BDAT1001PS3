@@ -53,6 +53,14 @@ namespace FTPApp
             }
 
             //Question2.3
+            var myCsvBytes = FTP.DownloadFileBytes(Constants.FTP.MyUrl + "/info.csv");
+            string infoMyCsvData = Encoding.UTF8.GetString(myCsvBytes, 0, myCsvBytes.Length);
+
+            string[] myLines = infoMyCsvData.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < myLines[0].Split(",", StringSplitOptions.RemoveEmptyEntries).Count(); i++)
+            {
+                Console.WriteLine($"{myLines[0].Split(",", StringSplitOptions.RemoveEmptyEntries)[i]}: {myLines[1].Split(",", StringSplitOptions.RemoveEmptyEntries)[i]}\n");
+            }
 
             //Question 2.4
 
@@ -72,7 +80,7 @@ namespace FTPApp
                     string infoCsvData = Encoding.UTF8.GetString(CSVFileBytes, 0, CSVFileBytes.Length);
 
                     string[] lines = infoCsvData.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
-                    if (lines[1] != "" || lines[1] != null)
+                    if (lines[1] != "" || lines[1] != null || infoCsvData != "")
                     {
                         student.FromCSV(lines[1]);
                         students.Add(student);
