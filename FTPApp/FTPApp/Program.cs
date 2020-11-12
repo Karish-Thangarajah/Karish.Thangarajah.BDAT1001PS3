@@ -109,9 +109,9 @@ namespace FTPApp
 
 
 
-                //Console.WriteLine(student.ToString());
-                //Console.WriteLine(student.ToCSV());
-                //Console.WriteLine("\n");
+                Console.WriteLine(student.ToString());
+                Console.WriteLine(student.ToCSV());
+                Console.WriteLine("\n");
             }
 
             // Question 5.1
